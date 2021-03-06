@@ -55,7 +55,23 @@ class App extends Component {
     this.setState({
       inputedName : event.target.value
     })
-  }
+  };
+
+  changeHandler = (id, name) => {
+    let newBooks = this.state.books.map(book => {
+      if(id == book.id) {
+        return {
+          ...book ,
+          name: name
+        }
+      }
+      return book
+        });
+
+    this.setState({
+      books: newBooks
+    })
+  };
 
   render() {
 
@@ -87,7 +103,9 @@ class App extends Component {
         <h1 style={{ color: 'green', textAlign: 'right' }}>Styled Text inline css</h1>
         <h1 style={ cssObj }>Styled Text in-file css</h1>
 
-        <Books deleteHandler={ this.deleteBook.bind(this) } books={ this.state.books } />
+        <Books deleteHandler={ this.deleteBook.bind(this) }
+               changeHandler={ this.changeHandler.bind(this) }
+               books={ this.state.books } />
       </div>
     );
   }
