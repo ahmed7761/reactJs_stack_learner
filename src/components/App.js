@@ -4,6 +4,7 @@ import './App.css';
 import First from "./first/First";
 import Counter from "./first/Counter";
 import Stateless from "./Stateless";
+import Books from './books/Books';
 
 class App extends Component {
 
@@ -14,6 +15,36 @@ class App extends Component {
     ],
 
     inputedName: '',
+
+    books: [
+      {
+        id: 1,
+        name: 'Java',
+        price: 20
+      },
+      {
+        id: 2,
+        name: 'Javascript',
+        price: 22
+      },
+      {
+        id: 3,
+        name: 'C++',
+        price: 30
+      },
+      {
+        id: 4,
+        name: 'PHP',
+        price: 40
+      }
+    ]
+  };
+
+  deleteBook = (id) => {
+    let newBooks = this.state.books.filter(book => book.id != id)
+    this.setState({
+        books: newBooks
+    })
   };
 
   clickHandler = () => {
@@ -55,6 +86,8 @@ class App extends Component {
         <h1 className="styled">Styled Text</h1>
         <h1 style={{ color: 'green', textAlign: 'right' }}>Styled Text inline css</h1>
         <h1 style={ cssObj }>Styled Text in-file css</h1>
+
+        <Books deleteHandler={ this.deleteBook.bind(this) } books={ this.state.books } />
       </div>
     );
   }
