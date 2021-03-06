@@ -27,6 +27,12 @@ class App extends Component {
   }
 
   render() {
+
+    let cssObj = {
+      color: 'yellow',
+      textAlign: 'center'
+    };
+
     return (
       <div className="App">
         <h1>Welcome { 10-2 }</h1>
@@ -45,6 +51,10 @@ class App extends Component {
         { this.state.inputedName ? <p>Hello Mr. {this.state.inputedName} </p> : '' }
 
         <Stateless name="Sharif" />
+
+        <h1 className="styled">Styled Text</h1>
+        <h1 style={{ color: 'green', textAlign: 'right' }}>Styled Text inline css</h1>
+        <h1 style={ cssObj }>Styled Text in-file css</h1>
       </div>
     );
   }
