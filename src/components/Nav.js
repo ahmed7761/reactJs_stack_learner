@@ -1,5 +1,6 @@
 import React from 'react'
 import {NavLink } from "react-router-dom";
+import Auth from "../auth";
 
 const style = {
     color: 'black',
@@ -12,6 +13,8 @@ const Nav = () => {
             <NavLink activeStyle={style} exact to='/'>Home</NavLink>
             <NavLink activeStyle={style} to='/about'>About</NavLink>
             <NavLink activeStyle={style} to='/contact'>Contact</NavLink>
+            { Auth.isLogin && <NavLink activeStyle={style} to='/logout'>Logout</NavLink> }
+
         </nav>
     )
 }
